@@ -1,8 +1,9 @@
 const express = require('express')
 const routes = express.Router()
 
-routes.get(('/'), (req, res) => {
-    res.json({message: 'Hello World! with routes'})
-})
+const categoryController = require('./controllers/CategoryController')
+
+routes.get('/categories', categoryController.list)
+routes.post('/categories', categoryController.create)
 
 module.exports = routes
