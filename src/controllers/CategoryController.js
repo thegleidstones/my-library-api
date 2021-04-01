@@ -13,5 +13,13 @@ module.exports = {
         const category = await Category.create({name})
 
         res.json(category)
+    },
+
+    async delete(req, res) {
+        const { categoryId } = req.params
+        const category = await Category.findByPk(categoryId)
+        await category.destroy()
+
+        res.json()
     }
 }
