@@ -13,5 +13,13 @@ module.exports = {
         const publisher = await Publisher.create({ name })
 
         res.json(publisher)
+    },
+
+    async delete (req, res) {
+        const { publisherId } = req.params
+        const publisher = await Publisher.findByPk(publisherId)
+        await publisher.destroy()
+
+        res.json()
     }
 }
